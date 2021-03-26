@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reyes Jquery</title>
+    <link rel="stylesheet" href="../src/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+
+<style>
+ /*Body css*/
+ 
+ body {
+     background: linear-gradient(-45deg, #4025ee, #6d59f1, #54fac5, #ee7fa9);
+     background-size: 200% 200%;
+     animation: gradient 15s ease infinite;
+ }
+ 
+ @keyframes gradient {
+     0% {
+         background-position: 0% 50%;
+     }
+     50% {
+         background-position: 100% 50%;
+     }
+     100% {
+         background-position: 0% 50%;
+     }
+ }
+ /* Exercise 1 */
+ 
+ .scrollUp {
+     margin-left: 45%;
+ }
+ /*Exercise 2*/
+ 
+ .submit-btn {
+     margin-left: 120px;
+ }
+ /*Exercise 3*/
+ 
+ .table {
+     border: 4px solid purple;
+ }
+ /* Exercise 7 */
+ 
+ .display {
+     color: blue;
+     font-weight: bold;
+ }
+ /*Exercise 9*/
+ 
+ .alternate {
+     float: right;
+ }
+ /*Exercise 10*/
+ 
+ .number {
+     border: 3px solid black;
+     margin-left: 5px;
+ }
+ /* Exercise 11 */
+ 
+ .animation {
+     background-color: #c7b0e6;
+     width: 180px;
+     border: 3px solid black;
+ }
+ /* Exercise 12 */
+ 
+ .box {
+     position: absolute;
+     background-color: #c24207;
+     left: 40px;
+     width: 100px;
+     height: 100px;
+     margin-left: 20%;
+ }
+ 
+ .check {
+     float: right;
+ }
+</style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Exercise 3 -->
+        <br><br>
+        <table class="table table-bordered table-primary">
+            <tr>
+                <th>List of Fake Friends/True Friends</th>
+                <th>Relationship</th>
+            </tr>
+            <tr>
+                <td>Rubylyn</td>
+                <td>It's Complicated daw</td>
+            </tr>
+            <tr>
+                <td>Rafols</td>
+                <td>Single kay Madrehonon</td>
+            </tr>
+            <tr>
+                <td>Goyo</td>
+                <td>Divorce</td>
+            </tr>
+            <tr>
+                <td>Christine</td>
+                <td>Single ready to mingle</td>
+            </tr>
+        </table>
+
+        <!-- Exercise 9 -->
+        <br>
+        <button class="btn btn-primary alternate">Click here to alternate table color</button><br><br>
+        <!-- Exercise 2 -->
+        <div class="check">
+            <br>
+            <input type="checkbox" name="accept" class="accept form-check-input" value="yes">
+            <label class="form-check-label">Accept Terms and Conditions</label><br>
+            <input type="submit" value="Submit" class="btn btn-primary submit-btn" disabled="disabled" name="submit">
+        </div>
+
+
+        <!-- Exercise 4 -->
+        <br><br>
+        <input type="text" name="text-box" class="text-box" maxlength="15">
+        <p><span class="numChar">15</span> Character(s) remaining only</p>
+
+        <!-- Exercise 7 -->
+        <br>
+        <div class="display"></div>
+
+        <!-- Exercise 5 -->
+        <br>
+        <button class="btn btn-primary add-option">Add</button>
+        <select class="dropdown form-select"></select>
+
+        <!-- Exercise 6 -->
+        <button class="btn btn-danger remove-option">Remove</button>
+
+        <!-- Exercise 8 -->
+        <br><br>
+        <input type="submit" value="I like you Gran!" class="btn  swap btn-warning">
+
+        <!-- Exercise 10 -->
+        <br><br>
+        <p>Input your number:<input type="text" class="number"></p>
+
+        <!-- Exercise 11 -->
+        <button class="btn btn-primary animate">Animate</button><br><br>
+        <p class="animation">&nbsp;Sanaol Sipa ug Lablayp </p>
+
+        <!-- Exercise 12 -->
+        <div class="btn-move">
+            <div class="box"></div>
+            <button class="btn btn-danger up">Up</button>
+            <button class="btn btn-danger down">Down</button><br><br>
+            <button class="btn btn-danger left">Left</button>
+            <button class="btn btn-danger right">Right</button>
+
+        </div>
+    </div> <br><br>
+
+    <!-- Exercise 1 -->
+    <button type="btn" class="btn scrollUp btn-secondary  ">Scroll ups</button> <br><br>
+
+
+</body>
+<script>
+    $(document).ready(function() {
+
+// Exercise 1
+$('.scrollUp').on('click', function() {
+    $('html').animate({ scrollTop: 0 }, 'slow');
+})
+
+// Exercise 2
+$('.accept').on('click', function() {
+    if ($('.submit-btn').is(':disabled')) {
+        $('.submit-btn').removeAttr('disabled');
+    } else {
+        $('.submit-btn').attr('disabled', 'disabled');
+    }
+})
+
+// Exercise 3
+$('table').addClass('table-bordered');
+
+// Excercise 4
+$('.text-box').on('keyup', function() {
+    $('.numChar').text(15 - $(this).val().length);
+})
+
+// Exercise 5
+$('.add-option').on('click', function() {
+    $('.dropdown').append('<option value="' + $('.text-box').val() + '">' + $('.text-box').val() + '</option>')
+})
+
+// Exercise 6
+$('.remove-option').on('click', function() {
+    $('.dropdown option[value="' + $('.dropdown').val() + '"]').remove();
+})
+
+// Exercise 7
+$(".text-box").on('keyup', function() {
+    $('.display').text($(this).val());
+    $("#errmsg").html("Digits Only").show().fadeOut("slow");
+    return false;
+})
+
+// Exercise 8
+$(".swap").on('click', function() {
+    if ($(".swap").val() == "I like you Gran!") {
+        $(".swap").val("I love you Cath!");
+    } else {
+        $(".swap").val("I like you Gran!");
+    }
+})
+
+// Exercise 9
+$('.alternate ').on('click', function() {
+    $('table').removeClass('table-secondary').addClass('table-success');
+})
+
+// Exercise 10
+$('.number').on('click', function() {
+    this.value = this.value.replace(/[^0-9\.]/g, '');
+})
+
+// Exercise 11
+$('.animate').on('click', function() {
+    $(".animation").animate({
+        width: "70%",
+        opacity: 0.4,
+        marginLeft: "0.6in",
+        fontSize: "3em",
+        borderWidth: "10px"
+    }, 1500);
+})
+
+// Exercise 12
+
+$('.right').on('click', function() {
+    $('.box').animate({ left: '+=50px' }, 'slow');
+})
+
+$('.left').on('click', function() {
+    $('.box').animate({ left: '-=50px' }, 'slow');
+})
+
+$('.up').on('click', function() {
+    $('.box').animate({ top: '-=50px' }, 'slow');
+})
+
+$('.down').on('click', function() {
+    $('.box').animate({ top: '+=50px' }, 'slow');
+})
+
+})
+</script>
+
+</html>
